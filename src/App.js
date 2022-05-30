@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Card from './Components/UI/Card/Card';
+import Button from './Components/UI/Button/Button';
+import LineChart from './Components/Charts/LineChart/LineChart';
 
 function App() {
+  const [state, updateData] = useState({
+    chartTitle : "BPM",
+    chartData : [[],[]]
+  });
+  const getData = (data) => {
+    console.log(data.chartData[1].length)
+    updateData(data);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Card className='btn-card'>
+        <Button title='BPM' sendData={getData} index={0}/>
+        <Button title='Temperature' sendData={getData} index={1}/>
+        <Button title='SPO2' sendData={getData} index={2}/>
+      </Card>
+      <Card>
+        <LineChart chartTitle={state.chartTitle} chartData={state.chartData}/>
+      </Card>
+    </React.Fragment>
   );
 }
 

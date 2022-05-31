@@ -3,7 +3,7 @@
     margin: auto;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -21,4 +21,12 @@
     margin: 0;
     padding: 0;
     font-size: 1.2rem;
+}
+
+.controls-text{
+    margin: 0;
+    text-align: center;
+}
+.controls-text h3 {
+    margin: 0;
 }

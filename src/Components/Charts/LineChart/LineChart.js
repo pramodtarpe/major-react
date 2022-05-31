@@ -6,7 +6,7 @@ import './LineChart.css';
 
 
 export default function LineChart(props){
-  const xlimit = -20;
+  const xlimit = -10;
   const userData = {
     labels : props.chartData[0].slice(xlimit),
     datasets : [

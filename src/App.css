@@ -3,4 +3,14 @@
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
+    height: 50px;
+}
+
+.chart-card {
+    width: 60%;
+    height: 60%;
+}
+
+.controls-card {
+    padding: 0;
 }

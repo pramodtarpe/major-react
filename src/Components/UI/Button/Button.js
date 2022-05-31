@@ -15,12 +15,12 @@ const Button = (props) => {
                 d_arr.push(data[x].split(" ")[i]);
             }
             props.sendData({
+                limits : props.limits,
                 chartTitle : props.title,
                 chartData : [l_arr,d_arr]
             });
         });
     }
-
     return (
         <button className="btn-container" onClick={clickHandler} >{props.title}</button>
     );

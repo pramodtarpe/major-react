@@ -4,6 +4,7 @@ import Card from './Components/UI/Card/Card';
 import Button from './Components/UI/Button/Button';
 import LineChart from './Components/Charts/LineChart/LineChart';
 import Controls from './Components/UI/Controls/Controls';
+import Overlay from './Components/Overlay/Overlay';
 
 const initialState = {
   index : 0,
@@ -35,7 +36,7 @@ function App() {
       initialState.fetchedData = {...data};
       initialState.controls[1] = l_arr.length;
       initialState.controls[0] = l_arr.length-10;
-      initialState.date = l_arr[0].split(',')[0];
+      initialState.date = l_arr[l_arr.length-1].split(',')[0];
       initialState.chartData = [l_arr,d_arr];
       updateData({...initialState});
     });
@@ -80,6 +81,7 @@ function App() {
     }
     state.controls = [l,r];
     state.chartData = [[...newL],[...newD]];
+    state.date = newL[0].split(',')[0];
     console.log(state.controls)
     updateData({...state});
   }
@@ -92,6 +94,7 @@ function App() {
         <Button data={state} limits={[0,100 ]} title={'SPO2'} sendData={getData} index={2}/>
       </Card>
       <Card className='chart-card'>
+        <Overlay data={state.fetchedData} />
         <LineChart limits={state.limits} chartTitle={state.chartTitle} chartData={state.chartData}/>
       </Card>
       <Card className='controls-card'>
